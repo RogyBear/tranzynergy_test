@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import ExpandedView from "./ExpandedView";
 import CustomListItem from "./CustomListItem";
-import { Divider, List, ListItem } from "@mui/material";
+import { Divider, List } from "@mui/material";
 import { ComponentContext } from "../contexts/ComponentContext";
 
 export default function UsersList() {
@@ -19,7 +19,7 @@ export default function UsersList() {
       <List>
         {filteredUsers?.map((filteredUser, index) => {
           return (
-            <>
+            <Fragment key={index}>
               <CustomListItem
                 filteredUser={filteredUser}
                 handleExpand={handleExpand}
@@ -33,7 +33,7 @@ export default function UsersList() {
                 setFilteredUsers={setFilteredUsers}
               />
               <Divider color="#D3D3D3" />
-            </>
+            </Fragment>
           );
         })}
       </List>

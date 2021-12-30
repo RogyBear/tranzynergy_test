@@ -16,8 +16,9 @@ export default function Tags(props) {
       if (tag.id === userIndex && !tag.hasOwnProperty("savedValues")) {
         return { ...tag, savedValues: [tag.value] };
       }
+
       if (tag.id === userIndex && tag.hasOwnProperty("savedValues")) {
-        tempTagObject = JSON.parse(JSON.stringify(tag)); // Deep Copy to not modify state
+        tempTagObject = JSON.parse(JSON.stringify(tag)); // Deep Copy of object
         tempTagObject.savedValues.push(tag.value);
         return tempTagObject;
       }
@@ -36,10 +37,11 @@ export default function Tags(props) {
     let flag = true;
 
     if (tags.length <= 0) {
+      // if tag array is uninitialized, then
+
       tempTagArr.push({ value: input, id: index });
     } else {
       tempTagArr = tags.map((tag) => {
-        // if the
         if (tag?.id === index) {
           flag = false;
           return { ...tag, value: input };
